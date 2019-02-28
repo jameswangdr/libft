@@ -6,13 +6,13 @@
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 16:33:01 by jamwang           #+#    #+#             */
-/*   Updated: 2019/02/26 21:30:21 by jamwang          ###   ########.fr       */
+/*   Updated: 2019/02/27 20:26:40 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	word_count(char *str, char c)
+static size_t	word_count(char *str, char c)
 {
 	int		i;
 	int		count;
@@ -30,7 +30,7 @@ size_t	word_count(char *str, char c)
 	return (count);
 }
 
-int		word_len(char *str, int i, char c)
+int				word_len(char *str, int i, char c)
 {
 	int		len;
 
@@ -43,20 +43,20 @@ int		word_len(char *str, int i, char c)
 	return (len);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	int		word;
-	int		i;
-	char	**arr;
-	int		j;
-	int		k;
+	int					i;
+	char				**arr;
+	unsigned int		j;
+	int					k;
 
-	word = word_count((char *)s, c);
-	if (!(arr = (char **)malloc(sizeof(char *) * word)))
+	if (s == NULL)
+		return (NULL);
+	if (!(arr = (char **)malloc(sizeof(char *) * word_count((char *)s, c) + 1)))
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (j < word)
+	while (j < word_count((char *)s, c))
 	{
 		if (s[i] != c)
 		{
@@ -66,8 +66,8 @@ char	**ft_strsplit(char const *s, char c)
 				arr[j][k++] = s[i++];
 			arr[j++][k] = '\0';
 		}
-		if (s[i] == c)
-			i++;
+		i++;
 	}
+	arr[word_count((char *)s, c)] = NULL;
 	return (arr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchen <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 16:22:21 by dchen             #+#    #+#             */
-/*   Updated: 2019/02/26 20:55:28 by jamwang          ###   ########.fr       */
+/*   Created: 2019/02/23 22:44:11 by jamwang           #+#    #+#             */
+/*   Updated: 2019/02/27 15:03:49 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,16 @@ int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
+t_list			*ft_lstnew(const void *content, size_t content_size);
+void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void			ft_lstadd(t_list **alst, t_list *n);
+void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void			ft_printbits(unsigned char octet);
+char			*ft_strrev(char *str);
+unsigned char	ft_swapbits(unsigned char octet);
+size_t			ft_wordcount(char *str, char c);
+void			ft_swap(int *a, int *b);
 
 #endif

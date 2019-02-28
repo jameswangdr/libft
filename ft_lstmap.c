@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 13:12:44 by jamwang           #+#    #+#             */
-/*   Updated: 2019/02/27 13:13:01 by jamwang          ###   ########.fr       */
+/*   Created: 2019/02/26 13:05:46 by jamwang           #+#    #+#             */
+/*   Updated: 2019/02/26 23:16:03 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-char	*ft_strcpy(char *dst, const char *src)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int i;
+	t_list		*new;
+	t_list		*list;
 
-	i = 0;
-	while (src[i] != '\0')
+	if (!lst)
+		return (NULL);
+	list = f(lst);
+	new = list;
+	while (lst->next)
 	{
-		dst[i] = src[i];
-		i++;
+		lst = lst->next;
+		if (!(list->next = f(lst)))
+		{
+			free(list->next);
+			return (NULL);
+		}
+		list = list->next;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (new);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_printbits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 13:12:44 by jamwang           #+#    #+#             */
-/*   Updated: 2019/02/27 13:13:01 by jamwang          ###   ########.fr       */
+/*   Created: 2019/02/27 12:21:04 by jamwang           #+#    #+#             */
+/*   Updated: 2019/02/27 13:26:07 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+void	ft_printbits(unsigned char octet)
 {
-	int i;
+	unsigned char count;
 
-	i = 0;
-	while (src[i] != '\0')
+	count = 128;
+	while (count > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		if (octet > count)
+		{
+			octet = octet - count;
+			count = count / 2;
+			write(1, "1", 1);
+		}
+		else
+		{
+			count = count / 2;
+			write(1, "0", 1);
+		}
 	}
-	dst[i] = '\0';
-	return (dst);
 }
