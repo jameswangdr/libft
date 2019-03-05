@@ -6,7 +6,7 @@
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 16:33:01 by jamwang           #+#    #+#             */
-/*   Updated: 2019/02/27 20:26:40 by jamwang          ###   ########.fr       */
+/*   Updated: 2019/03/04 16:04:58 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	word_count(char *str, char c)
 	return (count);
 }
 
-int				word_len(char *str, int i, char c)
+static int		word_len(char *str, int i, char c)
 {
 	int		len;
 

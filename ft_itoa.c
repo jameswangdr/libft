@@ -6,13 +6,13 @@
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 15:57:44 by jamwang           #+#    #+#             */
-/*   Updated: 2019/02/26 19:48:59 by jamwang          ###   ########.fr       */
+/*   Updated: 2019/03/04 16:05:26 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		size_of(int n)
+static int	size_of(int n)
 {
 	int size;
 
@@ -27,7 +27,7 @@ int		size_of(int n)
 	return (size);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*s;
 	int		size;
