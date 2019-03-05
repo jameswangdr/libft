@@ -6,7 +6,7 @@
 /*   By: jamwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 16:33:01 by jamwang           #+#    #+#             */
-/*   Updated: 2019/03/04 16:04:58 by jamwang          ###   ########.fr       */
+/*   Updated: 2019/03/04 22:54:45 by jamwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int		word_len(char *str, int i, char c)
 	int		len;
 
 	len = 0;
-	while (str[i] != c)
+	while (str[i] != c && str[i] != 0)
 	{
 		len++;
 		i++;
@@ -60,14 +60,14 @@ char			**ft_strsplit(char const *s, char c)
 	{
 		if (s[i] != c)
 		{
-			arr[j] = malloc(sizeof(char) * (word_len((char *)s, i, c) + 1));
+			arr[j] = ft_strnew(word_len((char *)s, i, c));
 			k = 0;
-			while (s[i] != c)
+			while (s[i] != c && s[i] != 0)
 				arr[j][k++] = s[i++];
 			arr[j++][k] = '\0';
 		}
 		i++;
 	}
-	arr[word_count((char *)s, c)] = NULL;
+	arr[word_count((char *)s, c)] = 0;
 	return (arr);
 }
